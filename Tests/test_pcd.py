@@ -8,7 +8,8 @@ from pcd import to_pcd
 import new_rendering
 from new_rendering import inverse_renderer
 # from superface import get_superface_nose_coods
-fname = 'andreadm2.wrl'#'subject002.wrl'#
+#fname = 'andreadm2.wrl'#
+fname ='subject002.wrl'#
 def test_to_pcd():
     inv = inverse_renderer()
     shape,texture =  inv.read(fname)

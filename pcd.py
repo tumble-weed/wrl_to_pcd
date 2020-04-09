@@ -23,12 +23,15 @@ def make_pcd_points(shape,texture):
     texture_np = np.array(texture)
     texture_np = skimage.img_as_ubyte(texture_np)
     shape_np = np.array(shape)
-    
+    maxes = np.zeros((3,))
+    for i in range(3):
+        maxes[i] = shape_np[:,i].max() 
     rgb_as_24bit_words = rgb_to_24bit(texture_np[:,0],texture_np[:,1],texture_np[:,2])
     
     pcd_point_list = []
     
     for s,rgb_ in zip(shape.tolist(),rgb_as_24bit_words):
+        s = np.array(s)/maxes
         pcd_point_list.append(list(s) + [rgb_])
     # import pdb;pdb.set_trace()
     return pcd_point_list
